@@ -72,7 +72,6 @@ func NewDataPipeline(ctx context.Context) (*DataPipeline, error) {
 		ctx,
 		purchasesStreamName,
 		shared.StreamSettings{
-			Name:        purchasesStreamName,
 			SourceTopic: purchasesTopicName,
 			Partitions:  1,
 		},
@@ -85,7 +84,6 @@ func NewDataPipeline(ctx context.Context) (*DataPipeline, error) {
 		ctx,
 		discountsStreamName,
 		shared.StreamSettings{
-			Name:       discountsStreamName,
 			Partitions: 1,
 		},
 		ksql.
@@ -101,7 +99,6 @@ func NewDataPipeline(ctx context.Context) (*DataPipeline, error) {
 		ctx,
 		sellerPurchasesStreamName,
 		shared.StreamSettings{
-			Name:       sellerPurchasesStreamName,
 			Partitions: 1,
 		},
 		ksql.
@@ -117,7 +114,6 @@ func NewDataPipeline(ctx context.Context) (*DataPipeline, error) {
 		ctx,
 		buyerHistoryStreamName,
 		shared.StreamSettings{
-			Name:       buyerHistoryStreamName,
 			Partitions: 1,
 		},
 		ksql.

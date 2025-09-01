@@ -87,7 +87,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Products input stream
 	productsInputStream, err := streams.CreateStream[dtypes.Product](ctx, ProductsStreamName, shared.StreamSettings{
-		Name:        ProductsStreamName,
 		SourceTopic: "products_topic",
 		Partitions:  1,
 	})
@@ -97,7 +96,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Shops input stream
 	shopsInputStream, err := streams.CreateStream[dtypes.Shop](ctx, ShopsStreamName, shared.StreamSettings{
-		Name:        ShopsStreamName,
 		SourceTopic: "shops_topic",
 		Partitions:  1,
 	})
@@ -107,7 +105,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Employees input stream
 	employeesInputStream, err := streams.CreateStream[dtypes.Employee](ctx, EmployeesStreamName, shared.StreamSettings{
-		Name:        EmployeesStreamName,
 		SourceTopic: "employees_topic",
 		Partitions:  1,
 	})
@@ -117,7 +114,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Customers input stream
 	customersInputStream, err := streams.CreateStream[dtypes.Customer](ctx, CustomersStreamName, shared.StreamSettings{
-		Name:        CustomersStreamName,
 		SourceTopic: "customers_topic",
 		Partitions:  1,
 	})
@@ -127,7 +123,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Shops dictionary
 	shopsTable, err := tables.CreateTable[dtypes.Shop](ctx, ShopsTableName, shared.TableSettings{
-		Name:        ShopsTableName,
 		SourceTopic: ShopsStreamName,
 		Partitions:  1,
 	})
@@ -137,7 +132,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Products dictionary
 	productsTable, err := tables.CreateTable[dtypes.Product](ctx, ProductsTableName, shared.TableSettings{
-		Name:        ProductsTableName,
 		SourceTopic: ProductsStreamName,
 		Partitions:  1,
 	})
@@ -147,7 +141,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Employees dictionary
 	employeesTable, err := tables.CreateTable[dtypes.Employee](ctx, EmployeesTableName, shared.TableSettings{
-		Name:        EmployeesTableName,
 		SourceTopic: EmployeesStreamName,
 		Partitions:  1,
 	})
@@ -157,7 +150,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 
 	// Customers dictionary
 	customersTable, err := tables.CreateTable[dtypes.Customer](ctx, CustomersTableName, shared.TableSettings{
-		Name:        CustomersTableName,
 		SourceTopic: CustomersStreamName,
 		Partitions:  1,
 	})
@@ -168,7 +160,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 	// Events input stream
 	// This stream will be used as source for all further processing
 	purchasesStream, err := streams.CreateStream[dtypes.Purchase](ctx, PurchasesStreamName, shared.StreamSettings{
-		Name:        PurchasesStreamName,
 		SourceTopic: PurchasesTopic,
 		Partitions:  1,
 	})
@@ -182,7 +173,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		BonusInvoicesStreamName,
 		shared.StreamSettings{
-			Name:        BonusInvoicesStreamName,
 			SourceTopic: PurchasesStreamName,
 			Partitions:  1,
 		},
@@ -202,7 +192,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		BonusBalancesTableName,
 		shared.TableSettings{
-			Name:        BonusBalancesTableName,
 			SourceTopic: BonusInvoicesStreamName,
 			Partitions:  1,
 		},
@@ -225,7 +214,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		BonusLevelsTableName,
 		shared.TableSettings{
-			Name:        BonusLevelsTableName,
 			SourceTopic: BonusBalancesTableName,
 			Partitions:  1,
 		},
@@ -251,7 +239,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		RegionAnalyticsTableName,
 		shared.TableSettings{
-			Name:        RegionAnalyticsTableName,
 			SourceTopic: PurchasesStreamName,
 			Partitions:  1,
 		},
@@ -281,7 +268,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		SellerKPITableName,
 		shared.TableSettings{
-			Name:        SellerKPITableName,
 			SourceTopic: PurchasesStreamName,
 			Partitions:  1,
 		},
@@ -304,7 +290,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		SellerSalaryTableName,
 		shared.TableSettings{
-			Name:        SellerSalaryTableName,
 			SourceTopic: PurchasesStreamName,
 			Partitions:  1,
 		},
@@ -329,7 +314,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		FavoriteCategoriesTableName,
 		shared.TableSettings{
-			Name:        FavoriteCategoriesTableName,
 			SourceTopic: PurchasesStreamName,
 			Partitions:  1,
 			KeyFormat:   kinds.JSON,
@@ -353,7 +337,6 @@ func NewPipeline(ctx context.Context) (*PurchasesPipeline, error) {
 		ctx,
 		NotificationsTableName,
 		shared.TableSettings{
-			Name:        NotificationsTableName,
 			SourceTopic: PurchasesStreamName,
 			Partitions:  1,
 		},

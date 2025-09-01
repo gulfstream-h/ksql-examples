@@ -63,7 +63,6 @@ func Create(ctx context.Context) {
 
 	exampleTable, err := tables.CreateTable[ExampleTable](
 		ctx, tableName, shared.TableSettings{
-			Name:        tableName,
 			SourceTopic: sourceTopic,
 			Partitions:  partitions,
 			ValueFormat: kinds.JSON,

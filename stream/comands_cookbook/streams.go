@@ -64,7 +64,6 @@ func Create(ctx context.Context) {
 
 	exampleTable, err := streams.CreateStream[ExampleStream](
 		ctx, streamName, shared.StreamSettings{
-			Name:        streamName,
 			SourceTopic: sourceTopic,
 			Partitions:  partitions,
 			ValueFormat: kinds.JSON,

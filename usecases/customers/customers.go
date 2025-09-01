@@ -80,7 +80,6 @@ func InitBase(ctx context.Context, pipe *DataPipeline) error {
 		ctx,
 		customersStreamName,
 		shared.StreamSettings{
-			Name:        customersStreamName,
 			Partitions:  1,
 			SourceTopic: customersStreamName,
 		},
@@ -94,7 +93,6 @@ func InitBase(ctx context.Context, pipe *DataPipeline) error {
 		ctx,
 		inventoryStreamName,
 		shared.StreamSettings{
-			Name:        inventoryStreamName,
 			SourceTopic: inventoryStreamName,
 			Partitions:  1,
 		},
@@ -108,7 +106,6 @@ func InitBase(ctx context.Context, pipe *DataPipeline) error {
 	ordersStream, err := streams.CreateStream[Orders](ctx, ordersStreamName, shared.StreamSettings{
 		Partitions:  1,
 		SourceTopic: ordersStreamName,
-		Name:        ordersStreamName,
 	})
 	if err != nil {
 		return fmt.Errorf("create orders stream: %w", err)
