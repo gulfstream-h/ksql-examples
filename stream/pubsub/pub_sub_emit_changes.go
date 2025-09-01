@@ -77,7 +77,6 @@ func StreamFromTopic(
 		ctx,
 		streamName,
 		shared.StreamSettings{
-			Name:        streamName,
 			SourceTopic: sourceName,
 			Partitions:  1,
 		},
